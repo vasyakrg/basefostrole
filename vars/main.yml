@@ -1,0 +1,11 @@
+---
+base_package:
+  - mc
+  - htop
+  - zip
+  - wget
+  - curl
+  - git
+  - jq
+  - net-tools
+  - gnupg2 screen

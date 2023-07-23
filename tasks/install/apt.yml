@@ -1,0 +1,9 @@
+---
+#Main installation actions
+
+- name: Install by APT | Package installation
+  apt:
+    name: "{{ base_package }}"
+    state: "present"
+    update_cache: true
+  become: true
