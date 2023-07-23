@@ -1,16 +1,31 @@
 ---
-- name: 'Include OS Family Specific Variables'
-  include_vars: "{{ lookup('first_found', params) }}"
-  vars:
-    params:
-      files:
-        - "{{ ansible_os_family | lower }}.yml"
-      paths:
-        - 'vars'
+- name: Print all available facts
+  ansible.builtin.debug:
+    var: ansible_os_family
 
-- include_tasks:
-    file: "{{ lookup('first_found', params) }}"
-  vars:
-    params:
-      files:
-        - "install/{{ ansible_pkg_mgr }}.yml"
+- name: install on Debian based distros
+  apt:
+    name: "{{ item }}"
+    state: present
+    update_cache: true
+  become: true
+  loop: "{{ base_package }}"
+  when: ansible_os_family == 'Debian'
+
+- name: install on RHEL based distros
+  yum:
+    name: "{{ item }}"
+    state: present
+    update_cache: true
+  become: true
+  loop: "{{ base_package }}"
+  when: ansible_os_family == 'RedHat'
+
+- name: install on RHEL based distros
+  dnf:
+    name: "{{ item }}"
+    state: present
+    update_cache: true
+  become: true
+  loop: "{{ base_package }}"
+  when: ansible_os_family == 'Fedora'

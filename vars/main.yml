@@ -8,4 +8,5 @@ base_package:
   - git
   - jq
   - net-tools
-  - gnupg2 screen
+  - gnupg2
+  - screen

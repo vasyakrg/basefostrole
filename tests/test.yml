@@ -1,5 +1,5 @@
 ---
-- hosts: localhost
+- hosts: testvms
   remote_user: root
   roles:
     - .

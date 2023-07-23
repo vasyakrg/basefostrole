@@ -1,2 +1,2 @@
-localhost
-
+[testvms]
+testvm ansible_host=

@@ -1,8 +1,0 @@
----
-#Main installation actions
-- name: Install by YUM
-  yum:
-    name: "{{ base_package }} "
-    state: "present"
-    disable_gpg_check: true
-  become: true
